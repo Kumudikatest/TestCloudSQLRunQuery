@@ -9,8 +9,8 @@ exports.handler = function (event, context, callback) {
     // You must always end/destroy the DB connection after it's used.
     sql.query({
         instanceIdentifier: 'test-instance-1',
-        query: 'INSERT INTO Customers (CustomerName, Address, Country)',
-        inserts: ['TestName','TestAddress','US']
+        query: 'SHOW TABLES;',
+        inserts: []
     }, function (error, results, connection) {
         if (error) {
             throw error;
@@ -20,6 +20,7 @@ exports.handler = function (event, context, callback) {
         }
         connection.end();
     });
+
 
 
     callback(null, 'Successfully executed');
